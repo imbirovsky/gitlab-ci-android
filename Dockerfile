@@ -52,7 +52,6 @@ RUN mkdir -p /root/.android \
 
 RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt \
  && ${ANDROID_HOME}/cmdline-tools/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} ${PACKAGES}
- 
  sdkmanager "emulator" "platform-tools" && \
     ln -s ${ANDROID_SDK_ROOT}/emulator/emulator /usr/local/bin && \
     ln -s ${ANDROID_SDK_ROOT}/platform-tools/adb /usr/local/bin && \
