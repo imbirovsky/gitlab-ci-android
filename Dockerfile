@@ -14,13 +14,6 @@ ENV ANDROID_HOME "/sdk"
 ENV PATH "$PATH:${ANDROID_HOME}/tools"
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG ANDROID_COMMAND_LINE_TOOLS_SHA1SUM=6ffc5bd72db2c755f9b374ed829202262a6d8aaf
-ARG ANDROID_COMMAND_LINE_TOOLS_VERSION=6200805_latest
-ARG SUPERCRONIC_SHA1SUM=5ddf8ea26b56d4a7ff6faecdd8966610d5cb9d85
-ARG SUPERCRONIC_VERSION=v0.1.9
-
-ENV ANDROID_SDK_ROOT=/var/android-sdk
-
 RUN apt-get -qq update \
  && apt-get install -qqy --no-install-recommends \
       bzip2 \
@@ -77,7 +70,6 @@ RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/pac
     addgroup --gid 1000 android && \
     useradd -u 1000 -g android -ms /bin/sh android && \
     chown -R android:android ${ANDROID_SDK_ROOT}
-
 
 ARG ANDROID_DEVICE="Nexus One"
 ARG ANDROID_VERSION=29
